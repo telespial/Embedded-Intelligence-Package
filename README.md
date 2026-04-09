@@ -2,7 +2,7 @@
 
 **Richard Haberkern**
 
-This repository is a reference **EIP (Embedded Intelligence Package)** and it includes a Smart Pong hybrid controller for reference.
+This repository is a reference **EIP (Embedded Intelligence Package)** and it includes a Smart Pong hybrid controller example.
 
 ## What EIP means
 
