@@ -1,0 +1,157 @@
+{
+  "eil_version": "1.0",
+  "package": {
+    "name": "smart_pong_eip",
+    "id": "eip.smartpong.v1",
+    "version": "1.1.0",
+    "type": "embedded_intelligence_package"
+  },
+  "model": {
+    "name": "smart_pong_intercept",
+    "id": "eil.smartpong.v1",
+    "version": "1.1.0",
+    "type": "hybrid_regression",
+    "runtime": "EIL",
+    "targets": [
+      "MCU",
+      "NPU"
+    ],
+    "safety_class": "advisory_gated"
+  },
+  "tensor": {
+    "input": {
+      "shape": [
+        16
+      ],
+      "dtype": "float32",
+      "quantized": true,
+      "quantization": {
+        "type": "int8",
+        "range_map_indices": [
+          0,
+          1,
+          2,
+          6,
+          7,
+          10,
+          11
+        ],
+        "remap": {
+          "from": [
+            0.0,
+            1.0
+          ],
+          "to": [
+            -1.0,
+            1.0
+          ]
+        }
+      }
+    },
+    "output": {
+      "shape": [
+        3
+      ],
+      "dtype": "float32",
+      "decode": "sigmoid_xyz"
+    }
+  },
+  "features": [
+    {
+      "idx": 0,
+      "name": "ball_x"
+    },
+    {
+      "idx": 1,
+      "name": "ball_y"
+    },
+    {
+      "idx": 2,
+      "name": "ball_z"
+    },
+    {
+      "idx": 3,
+      "name": "ball_vx"
+    },
+    {
+      "idx": 4,
+      "name": "ball_vy"
+    },
+    {
+      "idx": 5,
+      "name": "ball_vz"
+    },
+    {
+      "idx": 6,
+      "name": "paddle_l_y"
+    },
+    {
+      "idx": 7,
+      "name": "paddle_l_z"
+    },
+    {
+      "idx": 8,
+      "name": "paddle_l_vy"
+    },
+    {
+      "idx": 9,
+      "name": "paddle_l_vz"
+    },
+    {
+      "idx": 10,
+      "name": "paddle_r_y"
+    },
+    {
+      "idx": 11,
+      "name": "paddle_r_z"
+    },
+    {
+      "idx": 12,
+      "name": "score_diff_norm"
+    },
+    {
+      "idx": 13,
+      "name": "last_hit_dy"
+    },
+    {
+      "idx": 14,
+      "name": "last_hit_dz"
+    },
+    {
+      "idx": 15,
+      "name": "bias",
+      "constant": 1.0
+    }
+  ],
+  "outputs": [
+    {
+      "idx": 0,
+      "name": "y_hit"
+    },
+    {
+      "idx": 1,
+      "name": "z_hit"
+    },
+    {
+      "idx": 2,
+      "name": "t_hit"
+    }
+  ],
+  "runtime_policy": {
+    "inference_condition": "ball_moving_toward_paddle",
+    "mirror_left_side": true,
+    "fallback": "analytic",
+    "confidence_gate": {
+      "enabled": true,
+      "threshold": 0.25
+    },
+    "blend": {
+      "enabled": true,
+      "mode": "bounded"
+    },
+    "learning_events": [
+      "paddle_hit",
+      "paddle_miss"
+    ]
+  }
+}
