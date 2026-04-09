@@ -1,7 +1,7 @@
 # EIP — Embedded Intelligence Package  
 
-Proposed by: Richard Haberkern
-Contact: rmhaberkern@gmail.com
+##Proposed by: Richard Haberkern
+##Contact: rmhaberkern@gmail.com
 
 Free for evaluation. Commercial use requires permission. See LICENSE.md for more information.
 
