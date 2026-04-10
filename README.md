@@ -1,4 +1,4 @@
-# EIP — Embedded Intelligence Package  
+# EIP - Embedded Intelligence Package  
 
 **Proposed by:** Richard Haberkern  
 **Contact:** rmhaberkern@gmail.com  
