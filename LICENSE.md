@@ -37,7 +37,7 @@ You may NOT, without prior written permission from the author:
 
 ## 4. Commercial Licensing
 
-For commercial use orlicensing, please contact:
+For commercial use or licensing, please contact:
 
 **Richard Haberkern**  
 rmhaberkern@gmail.com  
